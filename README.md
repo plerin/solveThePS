@@ -1,0 +1,2 @@
+# solveThePS
+solve algorithms problem :)
