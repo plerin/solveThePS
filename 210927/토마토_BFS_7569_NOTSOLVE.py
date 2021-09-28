@@ -36,9 +36,15 @@ for i in range(h):
     for j in range(n):
         for z in range(m):
             bfs(i, j, z)
-            # print(bfs(i, j, z))
-            # if box[i][j][z] == 1:
-            #     bfs(i,j,z)
-# bfs가 끝나고 box에 확인하여 결과 반환
-print(box)
-print(max(map(max, map(max, box))))
+
+max_v = 0
+for i in range(h):
+    for j in range(n):
+        for z in range(m):
+            if box[i][j][z] == 0:
+                print(-1)
+                exit()
+            max_v = max(box[i][j][z], max_v)
+
+print(max_v-1) if max_v != 1 else print(0)
+# max_v = max(map(max, map(max, box)))
