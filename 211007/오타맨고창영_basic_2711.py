@@ -7,9 +7,6 @@ goal : 오타를 지운 문자열 출력
 '''
 
 T = int(input())
-ret = []
 for _ in range(T):
-    print(list(map(lambda x: x, input().split())))
-    # list(map(lambda x: x[1][:int(x[0])-1]+x[1][int(x[0]):], input().split())))
-
-# print(*ret, sep='\n')
+    i, word = list(input().split())
+    print(word[:int(i)-1]+word[int(i):])
