@@ -11,4 +11,9 @@ goal : 특정 수열에서 A,B번째 숫자까의 합 구하기
 A, B = list(map(int, input().split()))
 
 # 2
-lst = for i in range(1, 1000)
+seq, cnt = [], 1
+while len(seq) < B:
+    seq.extend([cnt for _ in range(cnt)])
+    cnt += 1
+# 3
+print(sum(seq[A-1:B]))
