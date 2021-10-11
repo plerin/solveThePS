@@ -49,4 +49,9 @@ for k in range(1, N+1):
             graph[i][j] = min(graph[i][j], graph[i][k]+graph[k][j])
 
 # print(graph)
-print(graph[1][K]+graph[K][X])
+ret = graph[1][K]+graph[K][X]
+
+if ret == INF:
+    print(-1)
+else:
+    print(ret)
