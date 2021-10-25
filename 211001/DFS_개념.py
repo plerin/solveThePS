@@ -9,6 +9,7 @@
 
 
 def dfs(start):
+    # 인접노드를 돌면서 방문체크를 하면 종료조건이 필요 없이 반복문이 끝난다.
     visited[start] = True
     print(start, end=' ')
 
