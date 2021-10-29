@@ -43,11 +43,9 @@ def howManyPushButton(s):
             else:
                 next_f = floor - dx[i]
 
-            if 0 <= next_f < (F+1) and graph[next_f] == 0:
+            if 1 <= next_f < (F+1) and graph[next_f] == 0:
                 graph[next_f] = graph[floor]+1
                 queue.append(next_f)
-                if next_f == G:
-                    return
 
 
 F, S, G, U, D = map(int, input().split())
@@ -55,10 +53,6 @@ graph = [0] * (F+1)
 dx = [U, D]
 
 graph[S] = 1
-
-# if S == G:
-#     print(0)
-#     exit()
 
 howManyPushButton(S)
 
