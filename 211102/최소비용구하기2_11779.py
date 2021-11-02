@@ -35,8 +35,9 @@ INF = int(1e9)
 
 def getCost(start):
     queue = []
-    heapq.heappush(queue, (0, start, [start]))
-    distance[start] = (0, [start])
+    heapq.heappush(queue, (0, start, str(start)))
+    distance[start] = (0, str(start))
+
     while queue:
         dist, v, route = heapq.heappop(queue)
 
@@ -45,26 +46,26 @@ def getCost(start):
 
         for i in graph[v]:
             cost = dist + i[1]
-            route.append(i[0])
+            n_route = route+','+str(i[0])
             if cost < distance[i[0]][0]:
-                print(route)
-                distance[i[0]] = (cost, route)
-                queue.append((cost, v, route))
-            route.pop()
+                distance[i[0]] = (cost, n_route)
+                queue.append((cost, i[0], n_route))
 
 
 n = int(input())
 m = int(input())
 graph = [[] for _ in range(n+1)]
-distance = [(INF, [])] * (n+1)
+distance = [(INF, '')] * (n+1)
 
 for _ in range(m):
     f, t, c = map(int, input().split())
     graph[f].append((t, c))
 
-# print(graph)
-
 o, d = map(int, input().split())
 
 getCost(o)
-print(distance)
+
+cost = distance[d][0]
+route = distance[d][1].split(",")
+
+print(cost, len(route), ' '.join(route), sep='\n')
