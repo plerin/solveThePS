@@ -13,10 +13,13 @@ N개의 노드와 M개의 간선으로 구성된 그래프(2차원)이 있고 2�
     - 3중 반복문을 사용하여 graph 갱신
 3. 결과 리턴 
 '''
-INF = int(1e9)
+import sys
 
-n = int(input())
-m = int(input())
+INF = int(1e9)
+input = sys.stdin.readline
+
+n = int(input().rstrip())
+m = int(input().rstrip())
 graph = [[INF] * n for _ in range(n)]
 
 for i in range(n):
@@ -26,17 +29,26 @@ for i in range(n):
 
 for _ in range(m):
     a, b, c = map(int, input().split())
-    graph[a-1][b-1] = c
+    graph[a-1][b-1] = min(graph[a-1][b-1], c)
 
-for k in range(n):
-    for a in range(n):
-        for b in range(n):
-            graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
-
+print('[before]')
 for arr in graph:
     for e in arr:
         if e == INF:
             e = 0
         print(e, end=' ')
     print()
-    # print(' '.join(arr))
+
+
+for k in range(n):
+    for a in range(n):
+        for b in range(n):
+            graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
+
+print('[after]')
+for arr in graph:
+    for e in arr:
+        if e == INF:
+            e = 0
+        print(e, end=' ')
+    print()
