@@ -16,15 +16,13 @@
         2) 가장 비용이 작은 값 queue에 담아
         3) while queue
         4) queue.popleft() -> 같은 그룹인지 체크(사이클 유무 확인) -> 아니면 ret에 cost 더하고 union하고 
-
-
 '''
 
 
 def find_parent(parent, x):
     if parent[x] != x:
         parent[x] = find_parent(parent, parent[x])
-    return x
+    return parent[x]
 
 
 def union_parent(parent, a, b):
