@@ -14,5 +14,5 @@ dwarps = [int(input()) for _ in range(9)]
 
 for comb in combinations(dwarps, 7):
     if sum(comb) == 100:
-        print(*comb, sep='\n')
+        print(*sorted(comb), sep='\n')
         exit()

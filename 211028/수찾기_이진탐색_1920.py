@@ -38,21 +38,14 @@ M = int(input())
 m_arr = list(map(int, input().split()))
 
 start, end = 0, len(n_arr)-1
-# ret = []
 
 n_arr.sort()
-print(n_arr)
 for e in m_arr:
     exist = binary_search(e, start, end)
     if exist == -1:
         print(0)
     else:
         print(1)
-    # ret.append(exist)
-    # if exist != -1:
-    #     ret.append(exsit)
-
-# print(*ret, sep='\n')
 
 
 # from bisect import bisect_left, bisect_right

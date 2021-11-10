@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 ret = []
 for _ in range(int(input())):
     n = int(input())

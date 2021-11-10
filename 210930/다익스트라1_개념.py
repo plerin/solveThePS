@@ -1,6 +1,7 @@
 
 INF = int(ie9)
 
+# n = 노드 / m = 간선
 n, m = map(int, input().split())
 start = int(input())
 # 노드 별 연결 리스트 형태 (to_node,cost)

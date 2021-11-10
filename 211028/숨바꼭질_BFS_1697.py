@@ -27,7 +27,7 @@ import sys
 
 input = sys.stdin.readline
 
-MAX_V = 100001
+MAX_V = 100001  # 최대 값을 지정
 
 
 def findSister(v):
@@ -48,7 +48,7 @@ def findSister(v):
 
 N, K = map(int, input().split())
 graph = [0] * MAX_V
-dx = ['-1', '+1', '*2']
+dx = ['-1', '+1', '*2']  # *2를 구현하기 위해 문자열로 담고 eval로 계산
 
 graph[N] = 1
 

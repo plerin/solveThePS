@@ -40,8 +40,8 @@ def dijkstra(s):
 
 # 1
 N, D = map(int, input().split())
-graph = [[] for _ in range(D+1)]
-distance = [INF] * (D+1)
+graph = [[] for _ in range(N+3)]
+distance = [INF] * (N+3)
 
 min_v, max_v = 0, 0
 
@@ -49,15 +49,18 @@ for _ in range(N):
     fr, to, cost = map(int, input().split())
     graph[fr].append((to, cost))
     min_v = min(min_v, fr)
-    max_v = max(max_v, to)
+    if to <= D:
+        max_v = max(max_v, to)
 
-dijkstra(0)
+graph[0].append((min_v, min_v))
 
-# ret = distance[max_v]
-# if min_v != 0:
-#     ret += min_v
-# if max_v != D:
-#     ret += D-max_v
+dijkstra(min_v)
+
+ret = 0
+if min_v != 0:
+    ret += min_v
+if max_v != D:
+    ret += D-max_v
 
 # print(graph)
 print(distance)

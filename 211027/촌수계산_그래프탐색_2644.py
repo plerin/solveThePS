@@ -39,8 +39,6 @@ for _ in range(m):
     graph[pa].append(ch)
     graph[ch].append(pa)
 
-# print(graph)
-
 ret = cal(p1)
 
 print(visited[p2])

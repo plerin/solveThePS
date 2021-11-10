@@ -11,21 +11,36 @@ n*m 그래프에서 상하좌우 찾아가며 아이스크림 개수 구하기
 # import sys
 
 
+# def dfs(x, y):
+#     if graph[x][y] == 1:
+#         return False
+#     graph[x][y] = 1
+
+#     for i in range(4):
+#         nx, ny = dx[i]+x, dy[i]+y
+#         if nx < 0 or nx >= n or ny < 0 or ny >= m:
+#             continue
+#         if graph[nx][ny] == 1:
+#             continue
+#         if graph[nx][ny] == 0:
+#             dfs(nx, ny)
+
+#     return True
+
+
 def dfs(x, y):
-    if graph[x][y] == 1:
+    if x < 0 or x >= n or y < 0 or y >= m:
         return False
-    graph[x][y] = 1
 
-    for i in range(4):
-        nx, ny = dx[i]+x, dy[i]+y
-        if nx < 0 or nx >= n or ny < 0 or ny >= m:
-            continue
-        if graph[nx][ny] == 1:
-            continue
-        if graph[nx][ny] == 0:
-            dfs(nx, ny)
+    if graph[x][y] == 0:
+        graph[x][y] = 1
+        dfs(x-1, y)
+        dfs(x+1, y)
+        dfs(x, y-1)
+        dfs(x, y+1)
+        return True
 
-    return True
+    return False
 
 
 # 1

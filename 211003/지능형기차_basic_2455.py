@@ -13,7 +13,7 @@ input = sys.stdin.readline
 ret = cur = 0
 for _ in range(4):
     off, on = list(map(int, input().split()))
-    cur = cur + (on-off)
+    cur += (on-off)
     ret = max(ret, cur)
 
 print(ret)

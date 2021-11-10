@@ -39,7 +39,6 @@ def solve(start):
     queue = []
     sx, sy = start[0], start[1]
     heapq.heappush(queue, (graph[sx][sy], sx, sy))
-    # distance[start[0]][start[1]] = graph[start[0]][start[1]]
 
     while queue:
         dist, x, y = heapq.heappop(queue)
@@ -57,7 +56,6 @@ def solve(start):
             if cost < distance[nx][ny]:
                 distance[nx][ny] = cost
                 queue.append((cost, nx, ny))
-    print(distance)
     return distance[n-1][n-1]
 
 

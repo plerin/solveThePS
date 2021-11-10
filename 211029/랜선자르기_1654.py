@@ -21,6 +21,9 @@ K개의 랜선을 갖고 있는데 N개의 길이가 같은 랜선을 만들어�
         : max_len(int)
 4. 결과 출력
 '''
+import sys
+
+input = sys.stdin.readline
 
 
 def cutting_cable(t, s, e):
@@ -28,10 +31,6 @@ def cutting_cable(t, s, e):
     while s <= e:
         mid = (s+e)//2
         total = sum(map(lambda x: x//mid if x >= mid else 0, cables))
-        # total = 0
-        # for c in cables:
-        #     if c >= mid:
-        #         total += c // mid
 
         if total < t:
             e = mid-1

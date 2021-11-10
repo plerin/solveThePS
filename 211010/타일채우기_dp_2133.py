@@ -13,7 +13,7 @@ def dp(n):
     d[1] = 0
     d[2] = 3
 
-    for i in range(4, n+1, 2):
+    for i in range(4, n+1, 1):
         d[i] = d[i-2]*3  # 맨 우측에 3*2 타일이 고정될 경우 이들 유형은 3개
 
         for j in range(4, i+1, 2):

@@ -41,7 +41,7 @@ for k in range(1, n+1):
         for b in range(1, n+1):
             graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
 
-print(graph)
+# print(graph)
 # 4
 ret = 0
 for i in range(1, n+1):

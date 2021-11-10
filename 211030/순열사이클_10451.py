@@ -27,8 +27,8 @@ from collections import deque
 
 
 def find_cycle(v):
-    if visited[v] == True:
-        return False
+    # if visited[v] == True:
+    #     return False
 
     visited[v] = True
 

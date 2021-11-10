@@ -15,15 +15,16 @@ cache에 중간 과정을 저장해두고 중복 호출될 경우 바로 사용�
 
 
 def tsp(dists):
-    N = len(dists)
-    VISITED_ALL = (1 << N)-1
+    N = len(dists)  # 도시 수
+    VISITED_ALL = (1 << N)-1    # n개 도시 비트 모두 켜기(==모두 방문)
     cache = [[None] * (1 << N) for _ in range(N)]  # cache 크기 == 동적 계획법의 시간복잡도
     INF = float('inf')
 
     def find_path(last, visited):
-        if visited == VISITED_ALL:
+        if visited == VISITED_ALL:  # 모두 방문한 경우
             return dists[last][0] or INF
 
+        # 해당(last의 방문현황(visited))가 기존에 구한 경우
         if cache[last][visited] is not None:
             return cache[last][visited]
 

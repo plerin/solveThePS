@@ -24,6 +24,7 @@ for i in range(1, N+1):
     num = int(input().rstrip())
 
     if len(left_arr) <= len(right_arr):
+        # left가 최대힙을 사용하는 이유 : 작은 수중 가장 큰 값이 중간값이 되기 때문에 최대 힙 사용
         heapq.heappush(left_arr, (-num, num))
     else:
         heapq.heappush(right_arr, (num, num))

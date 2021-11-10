@@ -46,10 +46,6 @@ distance = [INF] * (N)
 
 vision = list(map(int, input().split()))
 vision[-1] = 0
-# limit = []
-# for i, v in enumerate(vision):
-#     if v == 1 and i != N-1:
-#         limit.append(i)
 
 for _ in range(M):
     fr, to, cost = map(int, input().split())

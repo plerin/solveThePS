@@ -53,5 +53,4 @@ for i in range(N):
             ret.append(findGroup((i, j)))
 
 # 5
-ret = list(filter(lambda x: x != 0, ret))
-print(len(ret), *ret, sep='\n')
+print(len(ret), *sorted(ret), sep='\n')

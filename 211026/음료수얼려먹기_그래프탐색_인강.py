@@ -34,6 +34,7 @@ def dfs(x, y):
 
         if nx < 0 or nx >= N or ny < 0 or ny >= M:
             continue
+
         dfs(nx, ny)
 
     return True

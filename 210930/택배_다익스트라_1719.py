@@ -27,8 +27,6 @@ def dijkstra(start):
             for i in graph[now]:
                 nc = cost+i[1]
                 heapq.heappush(q, (nc, now, i[0]))
-    # for k in sorted(path):
-    #     print(k, path[k])
     return list(map(lambda x: path[x], sorted(path)))
 
 
@@ -43,10 +41,8 @@ for _ in range(m):
 
 ret = []
 for i in range(1, n+1):
-    # print(dijkstra(i))
     ret.append(dijkstra(i))
 
-# print()
 
 ret = list(map(list, zip(*ret)))
 for i in range(n):
@@ -56,11 +52,3 @@ for i in range(n):
         else:
             print(ret[i][j], end=' ')
     print()
-
-    # print(path)
-    # for j in range(len(shortest)):
-    #     if i == j:
-    #         print('-', end=' ')
-    #     else:
-    #         print(shortest[j], end=' ')
-    #     print()

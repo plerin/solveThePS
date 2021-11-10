@@ -16,6 +16,5 @@ idx = 0
 while arr:
     idx = (idx+(K-1)) % len(arr)
     ret.append(str(arr.pop(idx)))
-# print(", ".join(ret))
-# print('<{0:}>'.format(", ".join(ret)))
+
 print(f'<{", ".join(ret)}>')

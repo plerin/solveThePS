@@ -23,7 +23,6 @@ n, m = map(int, input().split())
 dduck = list(map(int, input().split()))
 
 ret = 0
-
 start, end = 0, max(dduck)
 
 while start <= end:

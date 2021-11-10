@@ -15,8 +15,6 @@ for _ in range(3):
 # 2
 multiple = list(map(int, str(multiple)))
 ret = [len(list(filter(lambda x: x == i, multiple))) for i in range(10)]
-# ret = []
-# ret.append([len(list(filter(lambda x: x == i, multiple))) for i in range(10)])
-# print(multiple)
+
 # 3
 print(*ret, sep='\n')

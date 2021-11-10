@@ -9,7 +9,7 @@ goal : 식량창고를 최대한 많이 약탈하는 경우 구하기(인접창�
 n = int(input())
 array = list(map(int, input().split()))
 
-# dp 테이블 초기화
+# dp 테이블 초기화 _ 최대 수만큼 잡아놓기
 d = [0] * 100
 
 # 바텀업 로직 진행

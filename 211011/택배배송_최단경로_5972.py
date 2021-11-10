@@ -50,6 +50,5 @@ for _ in range(M):
 # 2
 shortestPath(1)
 
-print(distance)
 # 3
 print(distance[N])

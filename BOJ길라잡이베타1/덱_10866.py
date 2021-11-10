@@ -72,7 +72,6 @@ def empty(deq):
 
 
 def front(deq):
-    print(deq)
     if deq:
         print(deq[0])
     else:

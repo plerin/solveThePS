@@ -31,21 +31,11 @@ for _ in range(m):
     a, b, c = map(int, input().split())
     graph[a-1][b-1] = min(graph[a-1][b-1], c)
 
-print('[before]')
-for arr in graph:
-    for e in arr:
-        if e == INF:
-            e = 0
-        print(e, end=' ')
-    print()
-
-
 for k in range(n):
     for a in range(n):
         for b in range(n):
             graph[a][b] = min(graph[a][b], graph[a][k]+graph[k][b])
 
-print('[after]')
 for arr in graph:
     for e in arr:
         if e == INF:

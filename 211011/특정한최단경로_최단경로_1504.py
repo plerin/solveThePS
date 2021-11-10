@@ -120,8 +120,6 @@ def shortestPath(s):
 # 1
 N, E = map(int, input().split())
 graph = [[] * (N+1) for _ in range(N+1)]
-# distance2 = [INF] * (N+1)
-# distance3 = [INF] * (N+1)
 
 for _ in range(E):
     fr, to, cost = map(int, input().split())
