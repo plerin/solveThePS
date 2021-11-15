@@ -11,28 +11,46 @@
     3. '()'를 만찾는 과정은 len(s)-1만큼 반복하며 i와 i+1를 사용  i와 i+1이 ()이 아니라면 계속 진행 ()맞으면 idx += 2 
 '''
 
-import sys
+# import sys
 
-input = sys.stdin.readline
+# input = sys.stdin.readline
 
-s = list(map(str, input().rstrip()))
-idx = 0
-stack = 0
-ret = 0
+# s = list(map(str, input().rstrip()))
+# idx = 0
+# stack = 0
+# ret = 0
 
-while idx < len(s)-1:
-    now, nex = s[idx], s[idx+1]
-    idx += 1
-    if now == '(' and nex == ')':
-        idx += 1
-        ret += stack
-        pass
-    elif now == '(':
-        stack += 1
-        pass
-    elif now == ')':
-        stack -= 1
-        ret += 1
-        pass
-print(stack)
-print(ret)
+# while idx < len(s)-1:
+#     now, nex = s[idx], s[idx+1]
+#     idx += 1
+#     if now == '(' and nex == ')':
+#         idx += 1
+#         ret += stack
+#         pass
+#     elif now == '(':
+#         stack += 1
+#         pass
+#     elif now == ')':
+#         stack -= 1
+#         ret += 1
+#         pass
+
+# print(ret+stack)
+
+bar_razor = list(input())
+answer = 0
+st = []
+
+for i in range(len(bar_razor)):
+    if bar_razor[i] == '(':
+        st.append('(')
+    else:
+        if bar_razor[i-1] == '(':
+            st.pop()  # st의 가장 마지막 (는 파이프가 아닌 레이저이기 때문에 pop먼저 진행
+            answer += len(st)
+        else:
+            # 레이저가 아닌 파이프 끝자락인 경우
+            st.pop()
+            answer += 1
+
+print(answer)

@@ -39,8 +39,8 @@ def go(day: int, point: int):
 
     if day >= n+1:
         if day == n+1:  # 마지막 날의 시간이 1일일 경우
-            ret = max(ret, point)
-        return
+            ret = max(ret, point) # 조건에 해당하는 경우 중 가장 큰 값을 남기기 위해 max 사용
+        return # 마지막 날의 시간이 2일 이상인 경우 그냥 리턴 
 
     # 상담 하느냐
     go(day+t[day], point+p[day])

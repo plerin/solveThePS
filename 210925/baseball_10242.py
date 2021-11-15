@@ -6,4 +6,4 @@ for _ in range(int(input())):
         lst.append(map(int, input().split()))
 
     s_y, s_k = map(sum, zip(*lst))
-    print((('Yensei', 'Korea')[s_y < s_k], 'Draw')[s_y == s_k])
+    print((('Yonsei', 'Korea')[s_y < s_k], 'Draw')[s_y == s_k])

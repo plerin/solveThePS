@@ -15,7 +15,7 @@
 
 
 n, m = eval('int(input()),'*2)
-grp = [i for i in range(n, m+1) if int(i**0.5)**2 == i]
+grp = [i for i in range(n, m+1) if int(i**0.5)**2 == i] # 제곱근 확인 int(i**0.5)**2 == i
 if grp:
     print(sum(grp), min(grp), sep='\n')
 else:

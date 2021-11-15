@@ -59,5 +59,5 @@ while idx < len(word):
         ret.append(word[idx])
         idx += 1
 
-print(''.join(word))
+# print(''.join(word))
 print(''.join(ret))

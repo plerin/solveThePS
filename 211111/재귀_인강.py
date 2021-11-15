@@ -59,3 +59,7 @@ print(func2(100))
 # ret = func()
 
 # print(ret)
+
+
+# 재귀 함수의 조건
+# 특정 입력에 대해서는 자기 자신을 호출하지 않고 종료되어야 함(base condition) , 모든 입력은 base condition으로 수렴해야 함

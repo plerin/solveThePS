@@ -10,8 +10,6 @@ bruteforce로 푼다면 시간 제한을 못 맞춰 -> O(N**2)
 # brute_force
 
 # two pointer
-
-
 def numberOfCase(n, m):
     global data
     end = 0
