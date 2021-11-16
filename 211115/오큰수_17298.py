@@ -17,10 +17,17 @@ seq = list(map(int, input().split()))
 stack = []
 ret = [-1] * len(seq)
 
+# for i in range(len(seq)):
+#     while stack and stack[-1][0] < seq[i]:
+#         val, idx = stack.pop()
+#         ret[idx] = seq[i]
+#     stack.append((seq[i], i))
+
+
 for i in range(len(seq)):
-    while stack and stack[-1][0] < seq[i]:
-        val, idx = stack.pop()
-        ret[idx] = seq[i]
-    stack.append((seq[i], i))
+    while stack and seq[stack[-1]] < seq[i]:
+        # val, idx = stack.pop()
+        ret[stack.pop()] = seq[i]
+    stack.append(i)
 
 print(*ret)

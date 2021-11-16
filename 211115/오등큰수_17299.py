@@ -16,10 +16,17 @@ cnt = Counter(seq)
 stack = []
 ret = [-1] * len(seq)
 
+# for i in range(len(seq)):
+#     while stack and stack[-1][0] < cnt[seq[i]]:
+#         val, idx = stack.pop()
+#         ret[idx] = seq[i]
+#     stack.append((cnt[seq[i]], i))
+
+
 for i in range(len(seq)):
-    while stack and stack[-1][0] < cnt[seq[i]]:
-        val, idx = stack.pop()
-        ret[idx] = seq[i]
-    stack.append((cnt[seq[i]], i))
+    while stack and cnt[seq[stack[-1]]] < cnt[seq[i]]:
+        ret[stack.pop()] = seq[i]
+    stack.append(i)
+
 
 print(*ret)
