@@ -13,9 +13,9 @@
 # print(str)
 
 while True:
-    str = input()
-    if not str:
-        # exit()
+    try:
+        str = input()
+    except EOFError:
         break
 
     ret = [0 for _ in range(4)]
