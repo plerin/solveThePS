@@ -14,6 +14,7 @@
 def convertFormat(n):
     if n == 0:
         return 0
+
     ans = ''
 
     while n:

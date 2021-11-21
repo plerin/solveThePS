@@ -1,3 +1,9 @@
+'''
+이항계수(binomial_coefficient) _ 주어진 크기 집합에서 원하는 개수만큼 순서 없이 뽑는 것
+ * 이항 : 하나의 아이템에 대해 뽑거나 / 안 뽑거나 두 가지 선택만 있기 때문
+ * ref : https://shoark7.github.io/programming/algorithm/3-ways-to-get-binomial-coefficients
+'''
+
 
 # factorial 구현
 def factorial(n):
@@ -6,9 +12,13 @@ def factorial(n):
         ans *= i
     return ans
 
+# 1번, nCk = n!/(n-k)!/k! (단, 0 <= k <= n)
+
 
 def bino_coef_factorial(n, r):
     return factorial(n) // factorial(n-r) // factorial(r)  # 1번 수식
+
+# 2번, nCk = n-1Ck + n-1Ck-1 => n개 중 k개 고르는 경우의 수 = 현재에서 선택 안 한 경우 + 현재에서 선택 한 경우 , k 조건은 위와 동일
 
 
 def bino_coef(n, k):
@@ -17,6 +27,15 @@ def bino_coef(n, k):
         return 1
 
     return bino_coef(n-1, k) + bino_coef(n-1, k-1)    # 3번 수식 이용
+
+
+'''
+# 3번
+2번에 동적계획법 활용 _ cache를 [n+1][r+1] 사이즈로 만들고 0으로 초기화
+k 조건 입력 _ n개 중 0개 뽑는 경우는 1 _ 하나도 뽑지 않는 경우 && n 개 중 n 개 뽑는 경우 _ 모두 뽑는 경우
+반복문(n개중 k개 뽑는 경우)을 돌며 점화식 작성 _ 2번
+'''
+#
 
 
 def bino_coef2(n, r):
@@ -39,6 +58,13 @@ def bino_coef2(n, r):
     return cache[n][r]  # cache를 (n+1)*(r+1)를 만들어놔서 [n][r] 그대로 사용 가능
 
 
+'''
+# 4번
+n개 중 n번을 뽑는 경우 _ times(int) : 현재 뽑은 횟수 // got(int) : 선택한 개수
+cache 선언 _ [n+1][n+1] n번 중 n번을 뽑음 && -1 : 아직 계산 안 함 || 나머지 : 계산 함 
+'''
+
+
 def bino_coef3(n, k):
     # k가 n보다 클 수 없으니 그런 경우 0 리턴
     if k > n:
@@ -47,11 +73,10 @@ def bino_coef3(n, k):
     cache = [[-1 for _ in range(n+1)] for _ in range(n+1)]
 
     def choose(times, got):
-        # n개중 k(got)개를 선택했을 경우
         if times == n:
-            return got == k  # n개 중 선택한 개수(got) 이 k면 카운트(True), 아니면 노 카운트
+            return got == k  # n개를 뽑았는데 그 중 선택한 개수가 k라면 True 아니면 False
 
-        if cache[times][got] != -1:  # 이전에 계산된 값이라면 그 값 반환_부분 문제
+        if cache[times][got] != -1:  # 이전에 계산된 값(!= -1)이라면 그 값 반환_부분 문제
             return cache[times][got]
 
         # times 번까지 got 개를 선택했을 때 최종적으로 n 번의 개회를 소진해서 선택한 수가 k가 되는 경우의 수는 time+1번째에서 got을 선택했을 때(이번에 선택 안했을때) + time+1에서 got+1개가 선택된 경우(이번에 선택했을 때)의 합

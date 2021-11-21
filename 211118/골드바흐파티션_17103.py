@@ -54,8 +54,6 @@ def findPrime():
 
 is_prime = findPrime()
 
-print(is_prime)
-
 for n in nums:
     ret = 0
     for i in range(2, n//2+1):

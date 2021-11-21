@@ -35,6 +35,16 @@ def findPrime(start, end):
     return prime
 
 
+def isPrime(num):
+    if num == 1:
+        return False
+    else:
+        for i in range(2, (num**0.5)+1):  # num의 약수는 대칭으로 이뤄져있어 제곱근 까지만 검사하면 나머지는 검사 할 필요없음
+            if num % i == 0:
+                return False
+        return True
+
+
 M, N = map(int, input().split())
 
 ret = findPrime(M, N)

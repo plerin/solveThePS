@@ -8,7 +8,6 @@
 진법 구하는 방식을 적용 10부터 35는 A~Z까지로 매칭 
     - if 나머지가 10보다 크면 chr(n+55)
 '''
-print(ord('A'))
 
 
 def convertFormat(n, b):
@@ -17,10 +16,9 @@ def convertFormat(n, b):
     while n:
         n, rest = divmod(n, b)
         if rest >= 10:
-            ret = chr(55+rest) + ret
+            ret += chr(55+rest)
         else:
-            ret = str(rest) + ret
-        # n //= b
+            ret += str(rest)
 
     return ret[::-1]
 
