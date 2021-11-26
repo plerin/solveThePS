@@ -19,29 +19,29 @@ dp = [0] 으로 MAX(1001) 초기화
 
 '''
 
-# MAX = 1001  # 입력 값의 최대 값+1
+MAX = 1001  # 입력 값의 최대 값+1
 
 
-# def bottomUp(packs):
-#     global dp
+def bottomUp(packs):
+    global dp
 
-#     dp[0] = 0
-#     for pack in range(1, len(packs)+1):
-#         for i in range(pack, MAX):
-#             if dp[i - pack] != -1:
-#                 dp[i] = max(dp[i], dp[i-pack] + packs[pack-1])
+    dp[0] = 0
+    for pack in range(1, len(packs)+1):
+        for i in range(pack, MAX):
+            if dp[i - pack] != -1:
+                dp[i] = max(dp[i], dp[i-pack] + packs[pack-1])
 
-#     return dp[N]
+    return dp[N]
 
 
-# N = int(input())
-# packs = list(map(int, input().split()))
+N = int(input())
+packs = list(map(int, input().split()))
 
-# dp = [-1] * MAX
+dp = [-1] * MAX
 
-# ret = bottomUp(packs)
+ret = bottomUp(packs)
 
-# print(ret)
+print(ret)
 
 
 # 카드 N개를 구매하는데 최대 값을 구하라
@@ -50,7 +50,7 @@ def bottomUp2(n: int, packs: list):
     global dp
 
     for i in range(1, n+1):
-        for k in range(1, i+1):
+        for k in range(1, i+1):  # 1부터 i까지 반복을 하면서 이전 카드팩의 값을 채워줌
             if dp[i] == 0:
                 dp[i] = dp[i-k] + packs[k]
             else:

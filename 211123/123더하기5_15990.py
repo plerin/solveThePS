@@ -48,8 +48,6 @@ def makeDP(dp: list):
         dp[i][1] = dp[i-2][0] % DIV + dp[i-2][2] % DIV
         dp[i][2] = dp[i-3][0] % DIV + dp[i-3][1] % DIV
 
-    # return sum(dp[n]) % DIV
-
 
 T = int(input())
 nums = [int(input()) for _ in range(T)]

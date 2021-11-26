@@ -26,9 +26,9 @@ def bottomUp(n: int, packs: list):
     global dp
 
     dp[0] = 0
-    for pack in range(1, len(packs)+1):
-        for i in range(pack, MAX):
-            if dp[i - pack] != INF:
+    for pack in range(1, len(packs)+1):  # 카드팩 종류 만큼
+        for i in range(pack, MAX):  # 카드팩의 카드 수 부터 MAX까지
+            if dp[i - pack] != INF:  # i - pack dp 값을 이전에 갱신한 적이 있다면
                 dp[i] = min(dp[i], dp[i - pack] + packs[pack-1])
 
     return dp[n]
@@ -41,3 +41,17 @@ dp = [INF] * MAX
 ret = bottomUp(N, packs)
 
 print(ret)
+
+# 풀이 2 더 간결한 방법
+N = int(input())
+
+packs = [0] + list(map(int, input().split()))
+dp = [False] * (N+1)
+
+for i in range(1, N+1):  # 카드팩 종류만큼 반복
+    for k in range(1, i+1):  # 1부터 현재 카드 개수 만큼
+        if dp[i] == False:  # 처음 만나면 값 갱신
+            dp[i] = dp[i-k] + packs[k]
+        else:   # 기존에 있는 값이면 그 중 min 값으로 갱신
+            dp[i] = min(dp[i], dp[i-k]+packs[k])
+print(dp[N])

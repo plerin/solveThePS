@@ -34,4 +34,4 @@ dp = [[0] * MAX for _ in range(MAX)]
 
 ret = bottomUp()
 
-print(ret)
+print(ret % 1000000000)
