@@ -26,7 +26,7 @@ def solve(n: int, triangle: list):
                 dp[i][j] = dp[i-1][j-1] + triangle[i][j]
             else:
                 dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) + triangle[i][j]
-    print(dp)
+
     return max(dp[n-1])
 
 
