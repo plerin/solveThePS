@@ -11,8 +11,10 @@ MOD = 10007
 
 
 def fillTile(n: int):
-    dp = [0 for _ in range(n)]
+    if n == 1:
+        return 1
 
+    dp = [0 for _ in range(n)]
     dp[0], dp[1] = 1, 3
 
     for i in range(2, n):
