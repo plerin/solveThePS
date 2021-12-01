@@ -23,9 +23,9 @@ def solve(num: int, cnt: int):
 
     for i in range(2, MAX):
         for j in range(2, MAX):
-            dp[i][j] = (dp[i-1][j] + dp[i][j-1]) % MOD
+            dp[i][j] = dp[i-1][j] + dp[i][j-1]
 
-    return dp[num][cnt]
+    return dp[num][cnt] % MOD
 
 
 N, K = map(int, input().split())
