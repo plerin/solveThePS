@@ -16,19 +16,22 @@
 3. ret = (abs(channel - n + cnt), abs(n - 100))
 '''
 
-MAX = 500001
+MAX = 1000001
 
 
 def moveChannel(target: int, broken: list):
+    # 기존 채널(100)에서 이동하는 경우를 초기값으로 지정
     ret = abs(100-target)
 
+    # 0에서 50만 가는 경우(50만) + 50만1~100만에서 50만 가는 경우(50만) = 100만
     for num in range(MAX):
-        # if list(map(lambda x: 1 if int(x) in broken else 0, str(num)))
         trigger = True
         for i in str(num):
+            # 현재 숫자에서 부서진 버튼 채널이 존재하면 생략
             if int(i) in broken:
                 trigger = False
                 break
+        # 부서진 번호가 없는 숫자인 경우
         if trigger:
             ret = min(ret, abs(target-num)+len(str(num)))
 
@@ -38,6 +41,7 @@ def moveChannel(target: int, broken: list):
 N = int(input())
 M = int(input())
 
+# 부서진 버튼이 있는 경우만 입력 받음
 if M:
     broken = list(map(int, input().split()))
 else:
