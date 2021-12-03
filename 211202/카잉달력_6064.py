@@ -19,8 +19,9 @@ func(calDate)
 
 def calDate(m: int, n: int, x: int, y: int):
 
+    # 구할 수 있는 최대 값을 m*n (m과 n의 최소공배수라고 정해놓음)
     while x <= (m*n):
-        if x % N == y % N:
+        if x % N == y % N:  # x = x + M 인데 x에 M을 더하가며 나머지가
             return x
         else:
             x += M
