@@ -5,7 +5,10 @@
 > 접근
 1. from itertools import permutations
 2. 다음 순열 로직 사용 
+3. DFS 백트래킹 사용
 
+직관성
+1 -> 3 -> 2
 '''
 
 

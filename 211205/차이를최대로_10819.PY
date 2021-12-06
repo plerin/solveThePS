@@ -55,10 +55,10 @@ def nextPermutation(seq: list):
 N = int(input())
 arr = list(map(int, input().split()))
 
-# ans1 = usingLibrary(arr)
-ans2 = nextPermutation(arr)
+ans1 = usingLibrary(arr)
+# ans2 = nextPermutation(arr)
 
-print(ans1, ans2)
+print(ans1)
 # for comb in permutations(arr, len(arr)):
 #     ans = max(ans, sum([abs(comb[i] - comb[i+1])
 #                         for i in range(len(comb)-1)]))
