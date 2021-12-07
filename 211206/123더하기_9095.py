@@ -61,5 +61,5 @@ for _ in range(int(input())):
 
     print(dp[n])
 
-    dfs([])
+    # dfs([])
     print(ans)

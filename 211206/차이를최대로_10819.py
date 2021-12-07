@@ -35,7 +35,7 @@ def maximumVal():
                 ans = max(ans, sum([abs(arr[i] - arr[i+1])
                                     for i in range(len(arr)-1)]))
                 break
-        print(arr)
+        # print(arr)
 
 
 N = int(input())
