@@ -56,7 +56,6 @@ solve#2. 비트마스트 + DP
 # move(0, 1, 0)   # now city, depth(visit city), charge
 
 # print(ans)
-import sys
 
 # 방문 도시를 비트마스크로 저장 1110 -> 4,3,2 도시 방문 & 1 도시 방문 안함
 
