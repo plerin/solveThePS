@@ -37,7 +37,6 @@ INF = int(1e9)
 
 def devide_team(ability: list):
     global N, ans
-    # start, link = set(), set()
 
     for comb in combinations(range(N), N//2):
         start = comb
