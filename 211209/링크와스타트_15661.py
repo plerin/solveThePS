@@ -30,28 +30,27 @@ def devide_team(abil: list):
         for comb in combinations(range(N), num):
             start_team = comb
             link_team = list(set(range(N))-set(start_team))
-            print(start_team, link_team)
-            # start_abil_sum, link_abil_sum = 0, 0
+            start_abil_sum, link_abil_sum = 0, 0
 
-            # for i in start_team:
-            #     for j in start_team:
-            #         start_abil_sum += abil[i][j]
+            for i in start_team:
+                for j in start_team:
+                    start_abil_sum += abil[i][j]
 
-            # for i in link_team:
-            #     for j in link_team:
-            #         link_abil_sum += abil[i][j]
+            for i in link_team:
+                for j in link_team:
+                    link_abil_sum += abil[i][j]
 
-            # # for i in range(N):
-            # #     for j in range(N):
-            # #         try:
-            # #             start_abil_sum += abil[start_team[i]][start_team[j]]
-            # #         except:
-            # #             start_abil_sum += 0
-            # #         try:
-            # #             link_abil_sum += abil[link_team[i]][link_team[j]]
-            # #         except:
-            # #             link_abil_sum += 0
-            # ans = min(ans, abs(start_abil_sum - link_abil_sum))
+            # for i in range(N):
+            #     for j in range(N):
+            #         try:
+            #             start_abil_sum += abil[start_team[i]][start_team[j]]
+            #         except:
+            #             start_abil_sum += 0
+            #         try:
+            #             link_abil_sum += abil[link_team[i]][link_team[j]]
+            #         except:
+            #             link_abil_sum += 0
+            ans = min(ans, abs(start_abil_sum - link_abil_sum))
 
 
 N = int(input())
