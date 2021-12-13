@@ -28,15 +28,9 @@ def operate(op: str, num: int):
     elif op == 'empty':
         ans = 0
 
-    print(op, num)
-    pass
-
-
 ans = 0
 
 for _ in range(int(input())):
     op, *num = input().split()
-
-    print(op, num)
 
     operate(op, int(num[0]) if num else 0)
