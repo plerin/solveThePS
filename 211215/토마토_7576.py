@@ -36,6 +36,7 @@ M, N = map(int, input().split())
 graph = []
 queue = deque([])
 dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
+
 for i in range(N):
     graph.append(list(map(int, input().split())))
     for j in range(M):
