@@ -30,6 +30,7 @@ N = int(input())
 graph = [[] for _ in range(N+1)]
 visited = [False] * (N+1)
 ret = [1]
+
 for _ in range(N-1):
     v1, v2 = map(int, input().split())
     graph[v1].append(v2)
