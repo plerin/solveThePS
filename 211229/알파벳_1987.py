@@ -28,7 +28,7 @@ def dfs(cnt: int, x: int, y:int):
 '''
 
 
-def dfs2(cnt: int, x: int, y: int):
+def dfs(cnt: int, x: int, y: int):
     global visited, ans
 
     ans = cnt if cnt > ans else ans
@@ -45,7 +45,7 @@ def dfs2(cnt: int, x: int, y: int):
     return
 
 
-def dfs(cnt: int, x: int, y: int):
+def dfs2(cnt: int, x: int, y: int):
     global visited, ans
 
     ans = cnt if cnt > ans else ans
@@ -66,13 +66,13 @@ def dfs(cnt: int, x: int, y: int):
 
 R, C = map(int, input().split())
 board = [input() for _ in range(R)]
-# visited = [False] * 26
-visited = set()
+visited = [False] * 26
+# visited = set()
 move = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 ans = 0
-print(board)
-# visited[ord(board[0][0])-65] = True
-visited.add(board[0][0])
+# print(board)
+visited[ord(board[0][0])-65] = True
+# visited.add(board[0][0])
 dfs(1, 0, 0)
 
 print(ans)

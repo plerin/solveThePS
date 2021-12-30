@@ -32,7 +32,7 @@ def solve(depth: int):
 
 def check(n: int):
     for j in range(n):
-        if row[n] == row[j] or (n - j == abs(row[n] - row[j])):
+        if row[n] == row[j] or n - j == abs(row[n] - row[j]):
             return False
     return True
 
