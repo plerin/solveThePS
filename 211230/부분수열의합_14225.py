@@ -23,9 +23,6 @@
 def dfs(start: int, total: int):
     global part
 
-    # if total not in part:
-    #     part.append(total)
-
     part.add(total)
 
     for i in range(start, N):

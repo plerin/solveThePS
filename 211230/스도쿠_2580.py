@@ -59,7 +59,6 @@ def dfs(cnt: int):
     candidate = check(x, y)
 
     for c in candidate:
-        print(c)
         board[x][y] = c
         dfs(cnt+1)
         board[x][y] = 0
