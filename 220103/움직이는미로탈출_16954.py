@@ -25,11 +25,11 @@ def escape_maze(x: int, y: int):
     global maze, wall
     # 최단 거리는 구하는 것도 아니고 maze에서 벽의 위치가 바뀌니까 또다른 변수는 필요 없음
     # 아니 그래도 방문여부 체크는 해야지 안그럼 안나아가
+    visit = [[False] * SIZE for _ in range(SIZE)]
     queue = deque([(x, y)])
     # visit[x][y] = True
 
     while queue:
-        visit = [[False] * SIZE for _ in range(SIZE)]
         x, y = queue.popleft()
 
         if x == END[0] and y == END[1]:

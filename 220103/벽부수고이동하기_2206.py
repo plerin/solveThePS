@@ -33,7 +33,6 @@ def solve(sx: int, sy: int):
         x, y, cnt = queue.popleft()
 
         if x == N-1 and y == M-1:
-            print(visit)
             return visit[x][y][cnt]
 
         for (dx, dy) in move:
