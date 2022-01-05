@@ -57,6 +57,7 @@ def solve(x: int, y: int):
                         q.append((nx, ny, cnt+1, dist+1, next_time))
                     else:
                         q.append((x, y, cnt, dist+1, next_time))
+    return -1
 
 
 N, M, K = map(int, input().split())
