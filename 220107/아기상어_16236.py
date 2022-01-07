@@ -73,11 +73,19 @@ prey에는 본인보다 작은 물고기가 있는데
 
 '''
 
+
+# 아 지금 나는 좌표간 거리를 (x1,y1), (x2,y2)에서 맨해튼 거리로 구하는데
+# 실제로 값에 따라서 그렇지 못한 경우가 있을 수 있구나!!!
+'''
+그 사이에 내가 지나가지 못하는 물고기가 있으면 그 거리는 맞지 않는거니까!!
+그러니까 bfs 구할 때 최단경로를 구하니까 그 경로로 가자
+1. bfs 반복문은 while True:
+2. 도착점은 조건(범위 안/size보다 작고/가장 가까운 값) -> 정렬로 구함
+'''
+
+
 from collections import deque
 import sys
-import heapq
-
-
 input = sys.stdin.readline
 
 
@@ -87,51 +95,41 @@ def isin(x: int, y: int):
     return False
 
 
-def get_dist(x1: int, y1: int, x2: int, y2: int):
-    return abs(x1 - x2) + abs(y1 - y2)
-
-
-def search(start: list, size: int):
-    global prey
-    # print([(x, y) for x in range(N)
-    #    for y in range(N) if arr[x][y] == size - 1])
-    for i in range(N):
-        for j in range(N):
-            if arr[i][j] == size-1:
-                # dist = get_dist(start[0], start[1], i, j)
-                prey.append((0, i, j))
-                # heapq.heappush(prey, (arr[i][j], dist, i, j))
-
-
-def bfs(sx: int, sy: int, ex: int, ey: int):
-    global cnt
-    dist = [[-1 for _ in range(N)] for _ in range(N)]
-    queue = deque([(sx, sy)])
-    dist[sx][sy] = 0
+def bfs(x: int, y: int):
+    visited = [[False for _ in range(N)]
+               for _ in range(N)]    # 방문 체크 겸 dist 저장
+    queue = deque([(x, y, 0)])
+    visited[x][y] = True
+    prey = []   # 먹이만 저장
 
     while queue:
-        x, y = queue.popleft()
-        if x == ex and y == ey:
-            # print(sx, sy, dist[x][y])
-            return dist[x][y]
-
+        x, y, dist = queue.popleft()
         for dx, dy in move:
-            nx, ny = dx + x, dy + y
-
-            if not isin(nx, ny) or arr[nx][ny] > size:
+            nx, ny = x + dx, y + dy
+            # print(visited)
+            if not isin(nx, ny) or visited[nx][ny]:   # 범위 밖 or 이미 방문
                 continue
 
-            if dist[nx][ny] == -1:
-                dist[nx][ny] = dist[x][y] + 1
-                queue.append((nx, ny))
-    return 0
+            # queue 넣을 것
+            if arr[nx][ny] <= size:  # 크기가 같아도 이동 가능
+                visited[nx][ny] = True
+                # print(nx, ny, visited[nx][ny], size)
+                queue.append((nx, ny, dist+1))
+                # prey 넣을 것
+            if 0 < arr[nx][ny] < size:  # 빈 칸(0)이 아니며 본인보다 작은 물고기
+                prey.append((nx, ny, dist))
+
+    prey.sort(key=lambda x: (x[2], x[0], x[1]),
+              reverse=True)   # 거리 / x / y 순 역정렬
+    print(prey)
+    return prey.pop() if len(prey) != 0 else (-1, -1, -1)
 
 
-move = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 N = int(input())
+move = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 arr = []
-prey = []
 start = []
+
 for i in range(N):
     row = list(map(int, input().split()))
     arr.append(row)
@@ -139,34 +137,21 @@ for i in range(N):
         if arr[i][j] == 9:
             start = [i, j]
             arr[i][j] = 0
-        elif arr[i][j] == 1:
-            prey.append((0, i, j))
-            # dist = get_dist(start, (i, j))
-            # heapq.heappush(prey, (arr[i][j], dist, i, j))
+
 size = 2
 cnt = 0
 ans = 0
+while True:
+    ex, ey, dist = bfs(start[0], start[1])
 
-# prey_size, dist, dx, dy = sorted(prey, key=lambda x: (
-#     x[0], get_dist(start[0], start[1], x[2], x[3]), x[2], x[3]), reverse=True).pop()
-# print(prey_size, dist, dx, dy)
-while prey:
-    # 정렬
-    prey.sort(key=lambda x: (
-        get_dist(start[0], start[1], x[1], x[2]), x[1], x[2]), reverse=True)
+    if dist == -1:  # 더 이상 먹이가 없는 경우
+        break
 
-    dist, dx, dy = prey.pop()
-    print(start, dx, dy)
-    ans += bfs(start[0], start[1], dx, dy)
-    # print(dx, dy, ans, cnt, size, prey)
-    start = [dx, dy]
-    cnt += 1
+    ans += dist
+    start = [ex, ey]    # 이전 도착지가 다음 출발지
 
     if cnt == size:
-        size += 1
         cnt = 0
-        # 먹이감 추가
-        search(start, size)
-
+        size += 1
 
 print(ans)

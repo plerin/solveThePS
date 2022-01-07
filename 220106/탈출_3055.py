@@ -29,6 +29,8 @@ def isin(x: int, y: int):
         return True
     return False
 
+# 다음 좌표가 물이 차오를지 여부 확인
+
 
 def check(x: int, y: int):
     for dx, dy in move:
