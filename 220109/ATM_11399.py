@@ -22,7 +22,7 @@ def solve():
     ret = 0
     for i in range(len(time)):
         ret += sum(time[:(i+1)])
-    print([time[:(i+1)] for i in range(len(time))])
+    # print([time[:(i+1)] for i in range(len(time))])
     return ret
 
 
