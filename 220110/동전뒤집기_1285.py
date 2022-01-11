@@ -24,8 +24,8 @@ coin = [list(input()) for _ in range(n)]
 ans = n * n + 1  # 입력 값중 최대 값
 
 for bit in range(1 << n):   # 모든 경우의 수 만큼 반복 _ 각 행마다 2가지 경우(뒤집는다 / 안뒤집는다) => 2 ** n가지
-    tmp = [coin[i][:] for i in range(n)]    # 입력 값(본래) 저장
-    for i in range(n):
+    tmp = [coin[i][:] for i in range(n)]    # 입력 값(본래) 불러옴
+    for i in range(n):  # 동전 개수만큼 반복
         if bit & (1 << n):  # 현재 경우의 수가 몇 개의 row을 포함하는지(==뒤집는지)
             for j in range(n):
                 if tmp[i][j] == 'H':
@@ -38,6 +38,7 @@ for bit in range(1 << n):   # 모든 경우의 수 만큼 반복 _ 각 행마다
         for j in range(n):
             if tmp[i][j] == 'T':
                 cnt += 1
+        # 열에서 'T'개수가 'H'보다 적으면 n-cnt(다 뒤집은)경우를 더해줘 _ 최솟값을 구하는것이기 때문
         tot += min(cnt, n-cnt)
     ans = min(tot, ans)
 
