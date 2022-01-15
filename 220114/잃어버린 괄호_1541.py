@@ -69,9 +69,9 @@ def solve() -> int:
 def short() -> int:
     div_exp = exp.split('-')
     ret = 0
-    for i in div_exp[0].split('+'):
+    for i in div_exp[0].split('+'):  # 첫번째 값을 어떻게 처리하느냐?
         ret += int(i)
-    for i in div_exp[1:]:
+    for i in div_exp[1:]:   # 2번째 값부터 처리
         for j in i.split('+'):
             ret -= int(j)
 

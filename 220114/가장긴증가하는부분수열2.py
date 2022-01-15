@@ -55,19 +55,16 @@ def solve():
         if part[-1] < c:
             part.append(c)
         else:
-            left, right = 0, len(part) - 1
-            pos = 0
+            left, right = 0, len(part)
 
-            while left <= right:
+            while left < right:
                 mid = (left + right) // 2
                 if part[mid] < c:
                     left = mid + 1
-                elif part[mid] > c:
-                    right = mid - 1
                 else:
-                    pos = mid
+                    right = mid
 
-            part[pos] = c
+            part[right] = c
 
     return len(part) - 1
 
