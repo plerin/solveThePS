@@ -11,26 +11,38 @@ N과 K가 주어졌을 때 두 조건을 만족하는 문자열 S를 찾아라
 K에 따라 앞에서부터 A로 채워나가기
     K >= N-1 -> A
 
-K가 n-1보다 같거나 큰 경우와 작은 경우로 나누어 계산
-    1) k >= N-1 -> 그 자리에 A
-    2) k < N-1 -> 필요한 개수만큼 계산해서 해당 자리에 A 나머지 B
-        ex) K=12, N=10이고 첫번째 자리에 A를 놓아서 K = 3, N = 9일 때 
-        필요한건 3이지만 A를 놓으면 앞에서 9가 8이 되므로 필요한 수는 4
-        앞에 A가 많으면 더 많이 깎여 
+
+풀이
+1. 패턴을 찾아라
+개수를 임의로 설정해서(N) A가 어떻게 변하고 언제 추가하는지?
+    - A가 추가되는 경우 / A가 앞으로 밀리는 경우가 있다.
+    -> A가 맨 앞으로 밀리면 그 다음은 A가 추가되는데 이 때 앞 자리 A 개수에 따라 영향을 받음
+        ex) AABBBB -> AAABBB 인 이유는 현재(8)에서 다음은(9)인데 이 때 필요한 B는 1개지만 B->A가 변함으로 써 앞의 A 2개는 B를 1개씩 잃어서 필요한 B의 개수가 3개가됨
+2. 코드로 풀이
+    1) ['B']로 초기화
+    2) a개, 현재 k개수, a 인덱스를 사용하여 코드로 풀이
+    3) 현재 k가 원하는 K보다 작은 경우 반복
+    4-1) 추가한 a가 가장 앞으로 왔을 때(더 이상 앞으로 밀지 못하고 새로운 a를 추가해야하는 경우)last_index <= a_count - 1
+        [N-1-(a_count+1)] 위치에 'A' 갱신
+    4-2) a를 앞으로 밀어주면 ㅗ디는 경우
+        [last_index] = 'B' , [last_index-1] = 'A'
+        last_index -= 1 and cur_k += 1
+    5) 반복문이 끝났을 때 K와 같으면
 '''
 
 
 def getStr(N: int, K: int) -> str:
-    curStr = ['B'] * N
-    a_count = 0
-    cur_k = 0
-    last_index = -1
+    curStr = ['B'] * N  # 초기값 B로 초기화
+    a_count = 0  # a 개수
+    cur_k = 0   # 현재 K개수 == (i,j)쌍
+    last_index = -1  # a index
 
-    while cur_k < K:
-        if last_index <= a_count - 1:
+    while cur_k < K:    # 현재 쌍의 개수가 K보다 작을 때
+        if last_index <= a_count - 1:  # a 인덱스가 가능한 앞에 있어서 a를 추가해야 하는 경우
             if curStr[N-1-(a_count+1)] == 'A':
                 break
             else:
+                # acount+1인 경우는 a 개수에 따라 인덱스 위치가 변경됨(앞에 a가 2개 있으면 뒷자리에 a를 추가했을 때 앞자리 a의 b 개수가 줄어드니까!)
                 curStr[N-1-(a_count+1)] == 'A'
                 last_index = N-1-(a_count+1)
                 a_count += 1
