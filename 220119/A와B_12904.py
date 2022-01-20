@@ -51,7 +51,8 @@ def posible_convert(t: str) -> int:
     return 1 if t == S else 0
 
 '''
-
+import sys
+sys.setrecursionlimit(10**7)
 
 def dfs(t: str) -> int:
     # 반환값 초기화(0)
@@ -92,5 +93,5 @@ def posible_convert(t: str) -> int:
 
 S, T = [list(input()) for _ in range(2)]
 
-print(dfs(T))
-# print(posible_convert(T))
+# print(dfs(T))
+print(posible_convert(T))
