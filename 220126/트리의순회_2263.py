@@ -53,6 +53,8 @@ def solve(in_start, in_end, post_start, post_end):
     print(parent, end=' ')
 
     # left / right 구분 _ parent 중심으로 in_start, in_end와 연산
+    # left/right/position은 기본적으로 in_order 기준으로 왼쪽 / 오른쪽 서브트리를 찾는 부분
+    # position과 in_start / position과 in_end와의 연산으로 구함
     left = position[parent] - in_start
     right = in_end - position[parent]
 
