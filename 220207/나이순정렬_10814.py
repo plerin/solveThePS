@@ -22,8 +22,10 @@ while arr:
     age, idx, name = heapq.heappop(arr)
     print(age, name)
 '''
-
+import sys
 import heapq
+
+input = sys.stdin.readline
 
 N = int(input())
 arr = []
