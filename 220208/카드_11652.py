@@ -29,5 +29,4 @@ for _ in range(N):
     card[int(input())] += 1
 
 sort_card = sorted(list(card.items()), key=lambda x: (-x[1], x[0]))
-print(sort_card)
 print(int(sort_card[0][0]))
