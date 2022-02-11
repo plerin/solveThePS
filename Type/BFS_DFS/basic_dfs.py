@@ -15,7 +15,7 @@ def dfs(graph, v, visited):
             dfs(graph, i, visited)
 
 
-# index = 0 은 비워둔다.
+# 각 노드가 연결된 정보를 표현
 graph = [
     [],
     [2, 3, 8],
