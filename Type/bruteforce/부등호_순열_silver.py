@@ -2,6 +2,7 @@
 backjoon url -> https://www.acmicpc.net/problem/2529
 
 >> Keyword
+완전 탐색, 순열, 조건에 여부 판단하는 메소드 하나 추가!
 
 >> P
 두 종류 부등호 '<', '>'가 k개 나열된 순서열 A가 있을 때
@@ -48,38 +49,40 @@ def solve(start, depth, comb) -> int:
 '''
 
 
-def match(num, op, comb):
-    if comb == '':
-        return True
+n = int(input())
+op = input().split()
+c = [False] * 10  # 0~9까지 중복 체크
+mx, mn = '', ''  # 최대/최소 값 저장
+
+# 이전 값과 현재값의 연산이 맞는지 판단
+
+
+def possible(now, prev, op):
     if op == '<':
-        return int(comb[-1]) < num
-    if op == '>':
-        print('match:', num, op, comb[-1])
-        return int(comb[-1]) > num
-    # print(num, op, comb)
-    # return False
+        return prev < now
+    elif op == '>':
+        return prev > now
+    return True
 
 
-def solve(start, depth, comb) -> int:
-    print('call', comb)
-    if depth == k+1:
-        print('ccccc', comb)
-        return comb
+def solve(depth, comb):
+    global mn, mx
+    # 종료조건 -> 최소 값이 채워지면 (not len(mn)) 최대 값을 갱신
+    if depth == n + 1:
+        if not len(mn):
+            mn = comb
+        else:
+            mx = comb
+        return
 
-    for i in range(start, 5):
-        # if str(num[i]) not in comb:
-        #     return solve(i, comb+str(num[i]))
-        if str(num[i]) not in comb and match(num[i], op[depth-1], comb):
-            print(i, depth+1, comb+str(num[i]))
-            return solve(i, depth+1, comb+str(num[i]))
+    for i in range(10):
+        if not c[i]:
+            if depth == 0 or possible(i, int(comb[-1]), op[depth-1]):
+                c[i] = True
+                solve(depth+1, comb+str(i))
+                c[i] = False
 
 
-k = int(input())
-op = list(input().split())
-
-num = list(range(10))
-# print(k, op, num)
-
-print(solve(0, 0, ''))
-# num.sort(reverse=True)
-# print(solve(0, 0, ''))
+solve(0, '')
+print(mx)
+print(mn)
