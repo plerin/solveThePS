@@ -1,7 +1,8 @@
 '''
-backjoon url -> https://www.acmicpc.net/problem/1339
+youtube url -> https://www.youtube.com/watch?v=2zjoKjt97vQ&list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC&index=2&t=758s
 
 >> Keyword
+그리디 알고리즘, 아이디어를 발견하고 정당성으로 검증
 
 >> P
 N이 1일 될 때까지 두 과정 중 하나를 반복적으로 수행

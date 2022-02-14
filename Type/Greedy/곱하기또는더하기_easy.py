@@ -3,6 +3,7 @@ youtube url -> https://www.youtube.com/watch?v=2zjoKjt97vQ&list=PLRx0vPvlEmdAghT
 
 >> Keyword
 그리디 알고리즘, 아이디어를 발견하고 정당성으로 검증
+예외 처리(0,1일 땐 '*'보다 '+'가 효율적)
 
 >> P
 0부터 9로만 이루어진 문자열 S가 주어졌을 때
