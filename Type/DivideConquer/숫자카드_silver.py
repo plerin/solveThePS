@@ -2,7 +2,7 @@
 backjoon url -> https://www.acmicpc.net/problem/10815
 
 >> Keyword
-
+이진탐색, 
 >> P
 숫자카드는 정수가 하나씩 적혀있다.
 상근이가 N개의 숫자카드를 갖고있고 정수 M개가 주어졌을 대 상근이가 갖고있는지 판단하기
@@ -35,7 +35,6 @@ def is_there(target):
     idx_right = bisect_right(card, target)
 
     return 0 if idx_left == idx_right else 1
-    pass
 
 
 n = map(int, input().rstrip())
